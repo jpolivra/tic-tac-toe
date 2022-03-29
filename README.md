@@ -1,1 +1,1 @@
-# Java Tic Tac Toe Game
+# College assignment - Tic Tac Toe built in java
