@@ -60,18 +60,37 @@ public class TicTacToe {
             String resultado = verificaVitoria();
             if(resultado.length() > 0) {
             	System.out.println(resultado);
+            	montarTabuleiro(modeloDeTabuleiro);
             	break;
             }
             
             // Realiza a jogada do computador de acordo com a dificuldade escolhida.
             switch(dificuldade) {
-             case 1:
+            // Dificuldade facil.
+            case 1:
+            	int jogadaDoComputador =  jogadaDoJogador + 1;
+           	 while(posicoesDoJogador.contains(jogadaDoComputador) || posicoesDoComputador.contains(jogadaDoComputador)) {
+    				jogadaDoComputador = jogadaDoComputador + 1;
+    			}
+           	 dispararJogada(modeloDeTabuleiro, jogadaDoComputador, "computador");
+           	 break;
+             // Dificuldade media.
+             case 2:
+             	jogadaDoComputador =  jogadaDoJogador + 2;
+            	 while(posicoesDoJogador.contains(jogadaDoComputador) || posicoesDoComputador.contains(jogadaDoComputador)) {
+     				jogadaDoComputador = jogadaDoComputador + 2;
+     			}
+            	 dispararJogada(modeloDeTabuleiro, jogadaDoComputador, "computador");
+            	 break;           	 
+             // Dificuldade dificil.
+             case 3:
             	 Random randomizador = new Random();
-            	 int jogadaDoComputador = randomizador.nextInt(9) + 1;
+            	 jogadaDoComputador = randomizador.nextInt(9) + 1;
             	 while(posicoesDoJogador.contains(jogadaDoComputador) || posicoesDoComputador.contains(jogadaDoComputador)) {
      				jogadaDoComputador = randomizador.nextInt(9) + 1;
      			}
             	 dispararJogada(modeloDeTabuleiro, jogadaDoComputador, "computador");
+            	 break;         	 
              default:
                  break; 
             }
@@ -83,6 +102,7 @@ public class TicTacToe {
             resultado = verificaVitoria();
             if(resultado.length() > 0) {
             	System.out.println(resultado);
+            	montarTabuleiro(modeloDeTabuleiro);
             	break;
             }
 		}		
